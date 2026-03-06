@@ -1,0 +1,2971 @@
+- id: COLREG_R13_OVERTAKING_GIVEWAY
+  article: Rule 13
+  summary: 'Overtaking: overtaking vessel shall keep out of the way.'
+  applicability:
+    and:
+    - eq:
+      - encounter_type
+      - overtaking
+    - eq:
+      - closing
+      - true
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - encounter_type
+  - closing
+  text_ref: 'Rule 13: Any vessel overtaking shall keep out of the way of the vessel
+    being overtaken.'
+- id: COLREG_R14_HEADON_ALTER_STARBOARD
+  article: Rule 14
+  summary: 'Head-on between power-driven vessels: each shall alter course to starboard.'
+  applicability:
+    and:
+    - eq:
+      - encounter_type
+      - head_on
+    - eq:
+      - ownship.vessel_class
+      - power
+    - eq:
+      - target.vessel_class
+      - power
+  deontic:
+    subject: both
+    role: BOTH
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - encounter_type
+  - ownship.vessel_class
+  - target.vessel_class
+  text_ref: 'Rule 14: each shall alter course to starboard so that each shall pass
+    on the port side of the other.'
+- id: COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD
+  article: Rule 15
+  summary: 'Crossing between power-driven vessels: if target is on starboard side,
+    ownship shall give-way.'
+  applicability:
+    and:
+    - eq:
+      - encounter_type
+      - crossing
+    - eq:
+      - ownship.vessel_class
+      - power
+    - eq:
+      - target.vessel_class
+      - power
+    - eq:
+      - is_target_on_starboard
+      - true
+    - or:
+      - eq:
+        - risk_of_collision
+        - true
+      - not:
+          exists:
+          - risk_of_collision
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden:
+      - primitive: TURN_PORT
+        params: {}
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - encounter_type
+  - ownship.vessel_class
+  - target.vessel_class
+  - is_target_on_starboard
+  text_ref: 'Rule 15: vessel which has the other on her own starboard side shall keep
+    out of the way.'
+- id: COLREG_R15_CROSSING_STANDON_TARGET_PORT
+  article: Rule 15
+  summary: 'Crossing between power-driven vessels: if target is on port side, ownship
+    is stand-on (complement).'
+  applicability:
+    and:
+    - eq:
+      - encounter_type
+      - crossing
+    - eq:
+      - ownship.vessel_class
+      - power
+    - eq:
+      - target.vessel_class
+      - power
+    - eq:
+      - is_target_on_starboard
+      - false
+    - or:
+      - eq:
+        - risk_of_collision
+        - true
+      - not:
+          exists:
+          - risk_of_collision
+  deontic:
+    subject: ownship
+    role: STAND_ON
+    modality: OBLIGATORY
+    strength: soft
+  actions:
+    maneuver:
+      allowed:
+      - primitive: MAINTAIN_COURSE_SPEED
+        params: {}
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - encounter_type
+  - ownship.vessel_class
+  - target.vessel_class
+  - is_target_on_starboard
+  text_ref: Rule 15 (complement).
+- id: COLREG_R16_EARLY_SUBSTANTIAL_ACTION
+  article: Rule 16
+  summary: Give-way vessel shall take early and substantial action to keep well clear.
+  applicability:
+    and:
+    - in:
+      - encounter_type
+      - - crossing
+        - overtaking
+    - or:
+      - eq:
+        - risk_of_collision
+        - true
+      - not:
+          exists:
+          - risk_of_collision
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: soft
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 15
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.2
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - encounter_type
+  text_ref: 'Rule 16: action shall be positive, made in ample time.'
+- id: COLREG_R17A1_STANDON_MAINTAIN
+  article: Rule 17
+  summary: Stand-on vessel shall keep her course and speed (initially).
+  applicability:
+    and:
+    - eq:
+      - encounter_type
+      - crossing
+    - eq:
+      - is_target_on_starboard
+      - false
+    - or:
+      - eq:
+        - risk_of_collision
+        - true
+      - not:
+          exists:
+          - risk_of_collision
+  deontic:
+    subject: ownship
+    role: STAND_ON
+    modality: OBLIGATORY
+    strength: soft
+  actions:
+    maneuver:
+      allowed:
+      - primitive: MAINTAIN_COURSE_SPEED
+        params: {}
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - encounter_type
+  - is_target_on_starboard
+  text_ref: 'Rule 17(a)(i): stand-on shall keep course and speed.'
+- id: COLREG_R17A2_STANDON_MAY_ACT_IF_GIVEWAY_NOT_ACTING
+  article: Rule 17
+  summary: Stand-on may take action if it becomes apparent give-way is not taking
+    appropriate action.
+  applicability:
+    and:
+    - eq:
+      - encounter_type
+      - crossing
+    - eq:
+      - is_target_on_starboard
+      - false
+    - eq:
+      - give_way_taking_action
+      - false
+  deontic:
+    subject: ownship
+    role: STAND_ON
+    modality: PERMITTED
+    strength: soft
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - encounter_type
+  - is_target_on_starboard
+  - give_way_taking_action
+  text_ref: Rule 17(a)(ii).
+- id: COLREG_R17B_STANDON_SHALL_ACT_WHEN_COLLISION_IMMINENT
+  article: Rule 17
+  summary: Stand-on shall take action when collision cannot be avoided by give-way
+    alone.
+  applicability:
+    and:
+    - eq:
+      - encounter_type
+      - crossing
+    - eq:
+      - is_target_on_starboard
+      - false
+    - eq:
+      - collision_imminent
+      - true
+  deontic:
+    subject: ownship
+    role: STAND_ON
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 15
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.2
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - encounter_type
+  - is_target_on_starboard
+  - collision_imminent
+  text_ref: Rule 17(b).
+- id: COLREG_R19_SAFE_SPEED_RESTRICTED_VIS
+  article: Rule 19
+  summary: 'Restricted visibility: proceed at safe speed adapted to conditions.'
+  applicability:
+    eq:
+    - visibility
+    - restricted
+  deontic:
+    subject: any
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  text_ref: Rule 19.
+- id: COLREG_R19_ENGINES_READY
+  article: Rule 19
+  summary: 'Restricted visibility: power-driven vessel shall have engines ready.'
+  applicability:
+    and:
+    - eq:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - power
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: soft
+  actions:
+    maneuver:
+      allowed:
+      - primitive: MAINTAIN_COURSE_SPEED
+        params:
+          engines_ready: true
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  text_ref: Rule 19(b).
+- id: COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN
+  article: Rule 19
+  summary: Avoid altering course to port for vessel forward of the beam (unless being
+    overtaken).
+  applicability:
+    and:
+    - eq:
+      - visibility
+      - restricted
+    - in:
+      - relative_bearing_sector
+      - - ahead
+        - starboard_bow
+        - starboard_beam
+        - port_bow
+        - port_beam
+    - or:
+      - eq:
+        - being_overtaken
+        - false
+      - not:
+          exists:
+          - being_overtaken
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: FORBIDDEN
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden:
+      - primitive: TURN_PORT
+        params: {}
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - relative_bearing_sector
+  text_ref: Rule 19(d)(i).
+- id: COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT
+  article: Rule 19
+  summary: Avoid altering course toward a vessel abeam or abaft the beam (starboard
+    side operationalization).
+  applicability:
+    and:
+    - eq:
+      - visibility
+      - restricted
+    - in:
+      - relative_bearing_sector
+      - - starboard_beam
+        - starboard_quarter
+        - astern
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: FORBIDDEN
+    strength: soft
+  actions:
+    maneuver:
+      allowed: []
+      forbidden:
+      - primitive: TURN_STARBOARD
+        params: {}
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - relative_bearing_sector
+  text_ref: Rule 19(d)(ii).
+- id: COLREG_R19D3_AVOID_TURN_TOWARD_PORT_ABEAM_OR_AFT
+  article: Rule 19
+  summary: Avoid altering course toward a vessel abeam or abaft the beam (port side
+    operationalization).
+  applicability:
+    and:
+    - eq:
+      - visibility
+      - restricted
+    - in:
+      - relative_bearing_sector
+      - - port_beam
+        - port_quarter
+        - astern
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: FORBIDDEN
+    strength: soft
+  actions:
+    maneuver:
+      allowed: []
+      forbidden:
+      - primitive: TURN_PORT
+        params: {}
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - relative_bearing_sector
+  text_ref: Rule 19(d)(ii).
+- id: COLREG_R9_APPLIES
+  article: Rule 9
+  summary: Narrow channel/fairway context applies.
+  applicability:
+    eq:
+    - area_type
+    - narrow_channel
+  deontic:
+    subject: any
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  text_ref: Rule 9.
+- id: COLREG_R9A_KEEP_STARBOARD_LIMIT
+  article: Rule 9
+  summary: Keep as near to outer limit on starboard side as safe and practicable.
+  applicability:
+    eq:
+    - area_type
+    - narrow_channel
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: KEEP_TO_STARBOARD_SIDE
+        params: {}
+      - primitive: MAINTAIN_COURSE_SPEED
+        params: {}
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  text_ref: Rule 9(a).
+- id: COLREG_R9B_SMALL_OR_SAILING_NOT_IMPEDE
+  article: Rule 9
+  summary: <20m or sailing shall not impede passage of vessel constrained to channel.
+  applicability:
+    and:
+    - eq:
+      - area_type
+      - narrow_channel
+    - or:
+      - and:
+        - exists:
+          - ownship.length_m
+        - lt:
+          - ownship.length_m
+          - 20
+      - eq:
+        - ownship.vessel_class
+        - sailing
+    - eq:
+      - impedes_channel_vessel
+      - true
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: FORBIDDEN
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden:
+      - primitive: IMPEDE
+        params:
+          target: channel_only_vessel
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  - ownship.vessel_class
+  - impedes_channel_vessel
+  text_ref: Rule 9(b).
+- id: COLREG_R9C_FISHING_NOT_IMPEDE
+  article: Rule 9
+  summary: Fishing vessel shall not impede passage of vessel constrained to channel.
+  applicability:
+    and:
+    - eq:
+      - area_type
+      - narrow_channel
+    - eq:
+      - ownship.vessel_class
+      - fishing
+    - eq:
+      - impedes_channel_vessel
+      - true
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: FORBIDDEN
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden:
+      - primitive: IMPEDE
+        params:
+          target: channel_only_vessel
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  - ownship.vessel_class
+  - impedes_channel_vessel
+  text_ref: Rule 9(c).
+- id: COLREG_R9D_CROSSING_NOT_IMPEDE
+  article: Rule 9
+  summary: Do not cross a channel if it impedes a vessel constrained to channel.
+  applicability:
+    and:
+    - eq:
+      - area_type
+      - narrow_channel
+    - eq:
+      - intends_cross_channel
+      - true
+    - eq:
+      - impedes_channel_vessel
+      - true
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: FORBIDDEN
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden:
+      - primitive: IMPEDE
+        params:
+          target: channel_only_vessel
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  - intends_cross_channel
+  - impedes_channel_vessel
+  text_ref: Rule 9(d).
+- id: COLREG_R9E_OVERTAKE_REQUIRES_AGREEMENT
+  article: Rule 9
+  summary: Overtaking in narrow channel requires agreement (simplified).
+  applicability:
+    and:
+    - eq:
+      - area_type
+      - narrow_channel
+    - eq:
+      - encounter_type
+      - overtaking
+    - or:
+      - eq:
+        - agreement_received_for_overtake
+        - false
+      - not:
+          exists:
+          - agreement_received_for_overtake
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: FORBIDDEN
+    strength: soft
+  actions:
+    maneuver:
+      allowed: []
+      forbidden:
+      - primitive: OVERTAKE_IN_CHANNEL
+        params: {}
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  - encounter_type
+  text_ref: Rule 9(e) simplified.
+- id: COLREG_R9F_AVOID_ANCHORING
+  article: Rule 9
+  summary: Avoid anchoring in a narrow channel if circumstances permit.
+  applicability:
+    and:
+    - eq:
+      - area_type
+      - narrow_channel
+    - eq:
+      - intends_anchor
+      - true
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: FORBIDDEN
+    strength: soft
+  actions:
+    maneuver:
+      allowed: []
+      forbidden:
+      - primitive: ANCHOR
+        params: {}
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  - intends_anchor
+  text_ref: Rule 9(g).
+- id: COLREG_R10_APPLIES
+  article: Rule 10
+  summary: Traffic separation scheme context applies.
+  applicability:
+    eq:
+    - area_type
+    - tss
+  deontic:
+    subject: any
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  text_ref: Rule 10.
+- id: COLREG_R10B1_PROCEED_IN_LANE_DIRECTION
+  article: Rule 10
+  summary: In a traffic lane, proceed in the general direction of traffic flow.
+  applicability:
+    and:
+    - eq:
+      - area_type
+      - tss
+    - eq:
+      - traffic_lane_relation
+      - in_lane_same_dir
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: MAINTAIN_COURSE_SPEED
+        params:
+          follow_lane_direction: true
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  - traffic_lane_relation
+  text_ref: Rule 10(b)(i).
+- id: COLREG_R10B2_AVOID_OPPOSITE_FLOW
+  article: Rule 10
+  summary: Do not proceed opposite to traffic flow in a lane (operationalized).
+  applicability:
+    and:
+    - eq:
+      - area_type
+      - tss
+    - eq:
+      - traffic_lane_relation
+      - in_lane_opposite_dir
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: FORBIDDEN
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden:
+      - primitive: PROCEED_OPPOSITE_FLOW
+        params: {}
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  - traffic_lane_relation
+  text_ref: Rule 10(b) operationalization.
+- id: COLREG_R10E_AVOID_SEPARATION_ZONE
+  article: Rule 10
+  summary: A vessel shall not normally enter a separation zone.
+  applicability:
+    and:
+    - eq:
+      - area_type
+      - tss
+    - eq:
+      - traffic_lane_relation
+      - in_separation_zone
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: FORBIDDEN
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden:
+      - primitive: ENTER_SEPARATION_ZONE
+        params: {}
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  - traffic_lane_relation
+  text_ref: Rule 10(e).
+- id: COLREG_R10C_CROSS_RIGHT_ANGLE_REQUIREMENT
+  article: Rule 10
+  summary: Crossing a traffic lane should be as nearly as practicable at right angles.
+  applicability:
+    and:
+    - eq:
+      - area_type
+      - tss
+    - eq:
+      - traffic_lane_relation
+      - crossing_lane
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: soft
+  actions:
+    maneuver:
+      allowed:
+      - primitive: CROSS_TSS_RIGHT_ANGLE
+        params:
+          target_angle_deg: 90
+          tolerance_deg: 20
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  - traffic_lane_relation
+  text_ref: Rule 10(c).
+- id: COLREG_R10C_CROSS_ANGLE_TOO_OBLIQUE
+  article: Rule 10
+  summary: 'Operationalization: if crossing angle far from 90°, corrective alteration
+    is required.'
+  applicability:
+    and:
+    - eq:
+      - area_type
+      - tss
+    - eq:
+      - traffic_lane_relation
+      - crossing_lane
+    - exists:
+      - tss_crossing_angle_deg
+    - or:
+      - lt:
+        - tss_crossing_angle_deg
+        - 70
+      - gt:
+        - tss_crossing_angle_deg
+        - 110
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: soft
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          prefer_right_angle_crossing: true
+      - primitive: TURN_PORT
+        params:
+          prefer_right_angle_crossing: true
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  - traffic_lane_relation
+  - tss_crossing_angle_deg
+  text_ref: Rule 10(c) operationalization.
+- id: COLREG_R10J_SMALL_SAILING_NOT_IMPEDE
+  article: Rule 10
+  summary: Small or sailing vessel shall not impede passage of vessel following a
+    traffic lane (simplified).
+  applicability:
+    and:
+    - eq:
+      - area_type
+      - tss
+    - or:
+      - and:
+        - exists:
+          - ownship.length_m
+        - lt:
+          - ownship.length_m
+          - 20
+      - eq:
+        - ownship.vessel_class
+        - sailing
+    - eq:
+      - impedes_tss_traffic
+      - true
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: FORBIDDEN
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden:
+      - primitive: IMPEDE
+        params:
+          target: tss_lane_vessel
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  - ownship.vessel_class
+  - impedes_tss_traffic
+  text_ref: Rule 10(j) simplified.
+- id: COLREG_R10F_FISHING_NOT_IMPEDE
+  article: Rule 10
+  summary: Fishing vessel shall not impede passage of vessel following a traffic lane
+    (simplified).
+  applicability:
+    and:
+    - eq:
+      - area_type
+      - tss
+    - eq:
+      - ownship.vessel_class
+      - fishing
+    - eq:
+      - impedes_tss_traffic
+      - true
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: FORBIDDEN
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden:
+      - primitive: IMPEDE
+        params:
+          target: tss_lane_vessel
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - area_type
+  - ownship.vessel_class
+  - impedes_tss_traffic
+  text_ref: Rule 10(i)/(j) simplified.
+- id: COLREG_R05_LOOKOUT
+  article: Rule 5
+  summary: Maintain a proper look-out by sight and hearing as well as by all available
+    means.
+  applicability:
+    exists:
+    - ownship.vessel_class
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: KEEP_LOOKOUT
+        params: {}
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - ownship.vessel_class
+  text_ref: 'Rule 5: Every vessel shall at all times maintain a proper look-out.'
+- id: COLREG_R06_SAFE_SPEED
+  article: Rule 6
+  summary: Proceed at a safe speed so that proper and effective action can be taken
+    to avoid collision.
+  applicability:
+    exists:
+    - ownship.vessel_class
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: PROCEED_SAFE_SPEED
+        params: {}
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.05
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - ownship.vessel_class
+  text_ref: 'Rule 6: Every vessel shall at all times proceed at a safe speed.'
+- id: COLREG_R07_RISK_OF_COLLISION_ASSESS
+  article: Rule 7
+  summary: Use all available means appropriate to the prevailing circumstances to
+    determine if risk of collision exists.
+  applicability:
+    exists:
+    - closing
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: ASSESS_RISK
+        params: {}
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - closing
+  text_ref: 'Rule 7: Every vessel shall use all available means to determine if risk
+    of collision exists.'
+- id: COLREG_R08_POSITIVE_ACTION_WHEN_RISK
+  article: Rule 8
+  summary: Any action to avoid collision shall be positive, made in ample time, and
+    with due regard to good seamanship.
+  applicability:
+    eq:
+    - risk_of_collision
+    - true
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: POSITIVE_ACTION
+        params: {}
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 15
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.2
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - risk_of_collision
+  text_ref: 'Rule 8: Action to avoid collision shall be positive and made in ample
+    time.'
+- id: COLREG_R18_RAM_GIVEWAY_TO_NUC
+  article: Rule 18
+  summary: 'Responsibilities: ram vessel shall keep out of the way of nuc vessel (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - ram
+    - eq:
+      - target.vessel_class
+      - nuc
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R11_IN_SIGHT_APPLIES
+  article: Rule 11
+  summary: Application of Rules 12–18 when vessels are in sight of one another (guard).
+  applicability:
+    eq:
+    - in_sight
+    - true
+  deontic:
+    subject: any
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - in_sight
+  text_ref: 'Rule 11: applies to vessels in sight of one another.'
+- id: COLREG_R12_SAILING_DIFF_TACK_WIND_PORT_GIVEWAY
+  article: Rule 12
+  summary: 'Sailing vs sailing: when on different tacks, vessel with wind on port
+    shall keep out of the way.'
+  applicability:
+    and:
+    - eq:
+      - in_sight
+      - true
+    - eq:
+      - ownship.vessel_class
+      - sailing
+    - eq:
+      - target.vessel_class
+      - sailing
+    - eq:
+      - sailing_tack_relation
+      - different
+    - eq:
+      - ownship.sailing_tack
+      - port
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - in_sight
+  - ownship.vessel_class
+  - target.vessel_class
+  - ownship.sailing_tack
+  - sailing_tack_relation
+  text_ref: 'Rule 12(a)(i): different tacks—wind on port keeps out of the way.'
+- id: COLREG_R12_SAILING_SAME_TACK_WINDWARD_GIVEWAY
+  article: Rule 12
+  summary: 'Sailing vs sailing: same tack—windward vessel shall keep out of the way.'
+  applicability:
+    and:
+    - eq:
+      - in_sight
+      - true
+    - eq:
+      - ownship.vessel_class
+      - sailing
+    - eq:
+      - target.vessel_class
+      - sailing
+    - eq:
+      - sailing_tack_relation
+      - same
+    - eq:
+      - ownship.is_windward
+      - true
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - in_sight
+  - ownship.vessel_class
+  - target.vessel_class
+  - sailing_tack_relation
+  - ownship.is_windward
+  text_ref: 'Rule 12(a)(ii): same tack—windward keeps out of the way.'
+- id: COLREG_R12_SAILING_PORT_CANNOT_DETERMINE_OTHER_GIVEWAY
+  article: Rule 12
+  summary: 'Sailing vs sailing: if wind on port and cannot determine other tack, keep
+    out of the way.'
+  applicability:
+    and:
+    - eq:
+      - in_sight
+      - true
+    - eq:
+      - ownship.vessel_class
+      - sailing
+    - eq:
+      - target.vessel_class
+      - sailing
+    - eq:
+      - ownship.sailing_tack
+      - port
+    - eq:
+      - sailing_tack_relation
+      - other_unknown
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - in_sight
+  - ownship.vessel_class
+  - target.vessel_class
+  - ownship.sailing_tack
+  - sailing_tack_relation
+  text_ref: 'Rule 12(a)(iii): wind on port—if cannot determine other tack, keep out
+    of the way.'
+- id: COLREG_R23_POWER_UNDERWAY_LIGHTS
+  article: Rule 23
+  summary: Power-driven vessel underway shall exhibit masthead, sidelights, sternlight.
+  applicability:
+    and:
+    - eq:
+      - ownship.vessel_class
+      - power
+    - in:
+      - ownship.nav_status
+      - - underway_making_way
+        - underway_not_making_way
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required:
+      - primitive: LIGHT_MASTHEAD
+        params: {}
+      - primitive: LIGHT_SIDELIGHTS
+        params: {}
+      - primitive: LIGHT_STERN
+        params: {}
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - ownship.vessel_class
+  - ownship.nav_status
+  text_ref: 'Rule 23: power-driven vessel underway lights.'
+- id: COLREG_R25_SAILING_UNDERWAY_LIGHTS
+  article: Rule 25
+  summary: Sailing vessel underway shall exhibit sidelights and sternlight (if not
+    using engine).
+  applicability:
+    and:
+    - eq:
+      - ownship.vessel_class
+      - sailing
+    - in:
+      - ownship.nav_status
+      - - underway_making_way
+        - underway_not_making_way
+    - or:
+      - eq:
+        - ownship.sailing_using_engine
+        - false
+      - not:
+          exists:
+          - ownship.sailing_using_engine
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required:
+      - primitive: LIGHT_SIDELIGHTS
+        params: {}
+      - primitive: LIGHT_STERN
+        params: {}
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - ownship.vessel_class
+  - ownship.nav_status
+  text_ref: 'Rule 25: sailing vessel underway lights.'
+- id: COLREG_R25_SAILING_USING_ENGINE_TREAT_AS_POWER
+  article: Rule 25
+  summary: Sailing vessel using engine shall exhibit power-driven lights (operationalization).
+  applicability:
+    and:
+    - eq:
+      - ownship.vessel_class
+      - sailing
+    - eq:
+      - ownship.sailing_using_engine
+      - true
+    - in:
+      - ownship.nav_status
+      - - underway_making_way
+        - underway_not_making_way
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required:
+      - primitive: LIGHT_MASTHEAD
+        params: {}
+      - primitive: LIGHT_SIDELIGHTS
+        params: {}
+      - primitive: LIGHT_STERN
+        params: {}
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - ownship.vessel_class
+  - ownship.sailing_using_engine
+  - ownship.nav_status
+  text_ref: 'Rule 25(b): sailing vessel under power shall exhibit Rule 23 lights.'
+- id: COLREG_R26_FISHING_OTHER_LIGHTS_SHAPES
+  article: Rule 26
+  summary: 'Fishing (other than trawling): red over white; shapes two cones apex together.'
+  applicability:
+    and:
+    - eq:
+      - ownship.vessel_class
+      - fishing
+    - in:
+      - ownship.nav_status
+      - - underway_making_way
+        - underway_not_making_way
+    - or:
+      - eq:
+        - ownship.fishing_mode
+        - other
+      - not:
+          exists:
+          - ownship.fishing_mode
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required:
+      - primitive: LIGHT_RED_OVER_WHITE
+        params: {}
+      - primitive: SHAPE_TWO_CONES_APEX
+        params: {}
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - ownship.vessel_class
+  - ownship.nav_status
+  text_ref: 'Rule 26: fishing vessel lights/shapes (simplified).'
+- id: COLREG_R26_FISHING_TRAWLING_LIGHTS_SHAPES
+  article: Rule 26
+  summary: 'Fishing trawling: green over white; shapes two cones apex together.'
+  applicability:
+    and:
+    - eq:
+      - ownship.vessel_class
+      - fishing
+    - in:
+      - ownship.nav_status
+      - - underway_making_way
+        - underway_not_making_way
+    - eq:
+      - ownship.fishing_mode
+      - trawling
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required:
+      - primitive: LIGHT_GREEN_OVER_WHITE
+        params: {}
+      - primitive: SHAPE_TWO_CONES_APEX
+        params: {}
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - ownship.vessel_class
+  - ownship.nav_status
+  - ownship.fishing_mode
+  text_ref: 'Rule 26: trawling vessel lights/shapes (simplified).'
+- id: COLREG_R27_NUC_LIGHTS_SHAPES
+  article: Rule 27
+  summary: 'Not Under Command: two all-round red; two balls.'
+  applicability:
+    eq:
+    - ownship.vessel_class
+    - nuc
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required:
+      - primitive: LIGHT_TWO_ALL_ROUND_RED
+        params: {}
+      - primitive: SHAPE_TWO_BALLS
+        params: {}
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - ownship.vessel_class
+  text_ref: 'Rule 27: NUC lights/shapes.'
+- id: COLREG_R27_RAM_LIGHTS_SHAPES
+  article: Rule 27
+  summary: 'Restricted ability to manoeuvre: red-white-red; ball-diamond-ball.'
+  applicability:
+    eq:
+    - ownship.vessel_class
+    - ram
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required:
+      - primitive: LIGHT_RED_WHITE_RED
+        params: {}
+      - primitive: SHAPE_BALL_DIAMOND_BALL
+        params: {}
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - ownship.vessel_class
+  text_ref: 'Rule 27: RAM lights/shapes.'
+- id: COLREG_R28_CBD_LIGHTS_SHAPES
+  article: Rule 28
+  summary: 'Constrained by draught: three all-round red; cylinder.'
+  applicability:
+    eq:
+    - ownship.vessel_class
+    - cbd
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required:
+      - primitive: LIGHT_THREE_ALL_ROUND_RED
+        params: {}
+      - primitive: SHAPE_CYLINDER
+        params: {}
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - ownship.vessel_class
+  text_ref: 'Rule 28: CBD lights/shapes.'
+- id: COLREG_R29_PILOT_LIGHTS
+  article: Rule 29
+  summary: 'Pilot vessel on duty: white over red (simplified).'
+  applicability:
+    and:
+    - eq:
+      - ownship.pilot_on_duty
+      - true
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required:
+      - primitive: LIGHT_WHITE_OVER_RED
+        params: {}
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - ownship.pilot_on_duty
+  text_ref: 'Rule 29: pilot vessel lights (simplified).'
+- id: COLREG_R30_ANCHOR_LIGHTS_SHAPES
+  article: Rule 30
+  summary: 'Vessel at anchor: all-round white; ball.'
+  applicability:
+    eq:
+    - ownship.nav_status
+    - at_anchor
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required:
+      - primitive: LIGHT_ALL_ROUND_WHITE
+        params: {}
+      - primitive: SHAPE_BALL
+        params: {}
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - ownship.nav_status
+  text_ref: 'Rule 30: anchored vessel lights/shapes (simplified).'
+- id: COLREG_R30_AGROUND_LIGHTS_SHAPES
+  article: Rule 30
+  summary: 'Vessel aground: two all-round red plus anchor light; two balls.'
+  applicability:
+    eq:
+    - ownship.nav_status
+    - aground
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required:
+      - primitive: LIGHT_TWO_ALL_ROUND_RED
+        params: {}
+      - primitive: LIGHT_ALL_ROUND_WHITE
+        params: {}
+      - primitive: SHAPE_TWO_BALLS
+        params: {}
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - ownship.nav_status
+  text_ref: 'Rule 30: aground vessel lights/shapes (simplified).'
+- id: COLREG_R24_TOWING_LIGHTS
+  article: Rule 24
+  summary: 'Towing vessel: towing light (yellow) in addition to power lights (simplified).'
+  applicability:
+    and:
+    - eq:
+      - ownship.is_towing
+      - true
+    - in:
+      - ownship.nav_status
+      - - underway_making_way
+        - underway_not_making_way
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required:
+      - primitive: LIGHT_TOWING
+        params: {}
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - ownship.is_towing
+  - ownship.nav_status
+  text_ref: 'Rule 24: towing lights (simplified).'
+- id: COLREG_R34_IN_SIGHT_TURN_STARBOARD_SOUND
+  article: Rule 34
+  summary: 'When in sight: altering course to starboard -> one short blast.'
+  applicability:
+    and:
+    - eq:
+      - in_sight
+      - true
+    - eq:
+      - intent_turn
+      - starboard
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: soft
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required:
+      - primitive: SOUND_1_SHORT
+        params: {}
+      sounds_forbidden: []
+  evidence_requirements:
+  - in_sight
+  - intent_turn
+  text_ref: 'Rule 34(a): one short blast—altering course to starboard.'
+- id: COLREG_R34_IN_SIGHT_TURN_PORT_SOUND
+  article: Rule 34
+  summary: 'When in sight: altering course to port -> two short blasts.'
+  applicability:
+    and:
+    - eq:
+      - in_sight
+      - true
+    - eq:
+      - intent_turn
+      - port
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: soft
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required:
+      - primitive: SOUND_2_SHORT
+        params: {}
+      sounds_forbidden: []
+  evidence_requirements:
+  - in_sight
+  - intent_turn
+  text_ref: 'Rule 34(a): two short blasts—altering course to port.'
+- id: COLREG_R34_IN_SIGHT_ASTERN_SOUND
+  article: Rule 34
+  summary: 'When in sight: operating astern propulsion -> three short blasts.'
+  applicability:
+    and:
+    - eq:
+      - in_sight
+      - true
+    - eq:
+      - intent_astern_propulsion
+      - true
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: soft
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required:
+      - primitive: SOUND_3_SHORT
+        params: {}
+      sounds_forbidden: []
+  evidence_requirements:
+  - in_sight
+  - intent_astern_propulsion
+  text_ref: 'Rule 34(a): three short blasts—operating astern propulsion.'
+- id: COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND
+  article: Rule 35
+  summary: 'Restricted visibility: power-driven making way -> prolonged blast every
+    2 minutes.'
+  applicability:
+    and:
+    - eq:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - power
+    - eq:
+      - ownship.nav_status
+      - underway_making_way
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required:
+      - primitive: SOUND_PROLONGED_EVERY_2MIN
+        params: {}
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - ownship.nav_status
+  text_ref: 'Rule 35(a): power-driven making way—prolonged blast every 2 minutes.'
+- id: COLREG_R35_RESTRICTED_POWER_STOPPED_SOUND
+  article: Rule 35
+  summary: 'Restricted visibility: power-driven underway but stopped -> prolonged
+    + two short.'
+  applicability:
+    and:
+    - eq:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - power
+    - eq:
+      - ownship.nav_status
+      - underway_not_making_way
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required:
+      - primitive: SOUND_PROLONGED_PLUS_2_SHORT
+        params: {}
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - ownship.nav_status
+  text_ref: 'Rule 35(a): power-driven stopped—prolonged + two short.'
+- id: COLREG_R35_RESTRICTED_SPECIAL_VESSEL_SOUND
+  article: Rule 35
+  summary: 'Restricted visibility: sailing/fishing/NUC/RAM/CBD -> prolonged + two
+    short.'
+  applicability:
+    and:
+    - eq:
+      - visibility
+      - restricted
+    - in:
+      - ownship.vessel_class
+      - - sailing
+        - fishing
+        - nuc
+        - ram
+        - cbd
+        - constrained_by_draft
+    - in:
+      - ownship.nav_status
+      - - underway_making_way
+        - underway_not_making_way
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required:
+      - primitive: SOUND_PROLONGED_PLUS_2_SHORT
+        params: {}
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - ownship.nav_status
+  text_ref: 'Rule 35(c): certain vessels—prolonged + two short.'
+- id: COLREG_R35_RESTRICTED_ANCHOR_SOUND
+  article: Rule 35
+  summary: 'Restricted visibility: vessel at anchor -> rapid bell ringing.'
+  applicability:
+    and:
+    - eq:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.nav_status
+      - at_anchor
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required:
+      - primitive: SOUND_BELL_RAPID
+        params: {}
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.nav_status
+  text_ref: 'Rule 35(g): anchor—rapid bell.'
+- id: COLREG_R35_RESTRICTED_AGROUND_SOUND
+  article: Rule 35
+  summary: 'Restricted visibility: vessel aground -> bell and gong.'
+  applicability:
+    and:
+    - eq:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.nav_status
+      - aground
+  deontic:
+    subject: ownship
+    role: ANY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed: []
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required:
+      - primitive: SOUND_BELL_AND_GONG
+        params: {}
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.nav_status
+  text_ref: 'Rule 35(h): aground—bell and gong.'
+- id: COLREG_R18_CBD_GIVEWAY_TO_NUC
+  article: Rule 18
+  summary: 'Responsibilities: cbd vessel shall keep out of the way of nuc vessel (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - cbd
+    - eq:
+      - target.vessel_class
+      - nuc
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_CBD_GIVEWAY_TO_RAM
+  article: Rule 18
+  summary: 'Responsibilities: cbd vessel shall keep out of the way of ram vessel (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - cbd
+    - eq:
+      - target.vessel_class
+      - ram
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_CONSTRAINED_BY_DRAFT_GIVEWAY_TO_NUC
+  article: Rule 18
+  summary: 'Responsibilities: constrained_by_draft vessel shall keep out of the way
+    of nuc vessel (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - constrained_by_draft
+    - eq:
+      - target.vessel_class
+      - nuc
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_CONSTRAINED_BY_DRAFT_GIVEWAY_TO_RAM
+  article: Rule 18
+  summary: 'Responsibilities: constrained_by_draft vessel shall keep out of the way
+    of ram vessel (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - constrained_by_draft
+    - eq:
+      - target.vessel_class
+      - ram
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_CONSTRAINED_BY_DRAFT_GIVEWAY_TO_CBD
+  article: Rule 18
+  summary: 'Responsibilities: constrained_by_draft vessel shall keep out of the way
+    of cbd vessel (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - constrained_by_draft
+    - eq:
+      - target.vessel_class
+      - cbd
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_FISHING_GIVEWAY_TO_NUC
+  article: Rule 18
+  summary: 'Responsibilities: fishing vessel shall keep out of the way of nuc vessel
+    (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - fishing
+    - eq:
+      - target.vessel_class
+      - nuc
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_FISHING_GIVEWAY_TO_RAM
+  article: Rule 18
+  summary: 'Responsibilities: fishing vessel shall keep out of the way of ram vessel
+    (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - fishing
+    - eq:
+      - target.vessel_class
+      - ram
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_FISHING_GIVEWAY_TO_CBD
+  article: Rule 18
+  summary: 'Responsibilities: fishing vessel shall keep out of the way of cbd vessel
+    (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - fishing
+    - eq:
+      - target.vessel_class
+      - cbd
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_FISHING_GIVEWAY_TO_CONSTRAINED_BY_DRAFT
+  article: Rule 18
+  summary: 'Responsibilities: fishing vessel shall keep out of the way of constrained_by_draft
+    vessel (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - fishing
+    - eq:
+      - target.vessel_class
+      - constrained_by_draft
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_SAILING_GIVEWAY_TO_NUC
+  article: Rule 18
+  summary: 'Responsibilities: sailing vessel shall keep out of the way of nuc vessel
+    (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - sailing
+    - eq:
+      - target.vessel_class
+      - nuc
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_SAILING_GIVEWAY_TO_RAM
+  article: Rule 18
+  summary: 'Responsibilities: sailing vessel shall keep out of the way of ram vessel
+    (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - sailing
+    - eq:
+      - target.vessel_class
+      - ram
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_SAILING_GIVEWAY_TO_CBD
+  article: Rule 18
+  summary: 'Responsibilities: sailing vessel shall keep out of the way of cbd vessel
+    (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - sailing
+    - eq:
+      - target.vessel_class
+      - cbd
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_SAILING_GIVEWAY_TO_CONSTRAINED_BY_DRAFT
+  article: Rule 18
+  summary: 'Responsibilities: sailing vessel shall keep out of the way of constrained_by_draft
+    vessel (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - sailing
+    - eq:
+      - target.vessel_class
+      - constrained_by_draft
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_SAILING_GIVEWAY_TO_FISHING
+  article: Rule 18
+  summary: 'Responsibilities: sailing vessel shall keep out of the way of fishing
+    vessel (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - sailing
+    - eq:
+      - target.vessel_class
+      - fishing
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_POWER_GIVEWAY_TO_NUC
+  article: Rule 18
+  summary: 'Responsibilities: power vessel shall keep out of the way of nuc vessel
+    (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - power
+    - eq:
+      - target.vessel_class
+      - nuc
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_POWER_GIVEWAY_TO_RAM
+  article: Rule 18
+  summary: 'Responsibilities: power vessel shall keep out of the way of ram vessel
+    (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - power
+    - eq:
+      - target.vessel_class
+      - ram
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_POWER_GIVEWAY_TO_CBD
+  article: Rule 18
+  summary: 'Responsibilities: power vessel shall keep out of the way of cbd vessel
+    (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - power
+    - eq:
+      - target.vessel_class
+      - cbd
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_POWER_GIVEWAY_TO_CONSTRAINED_BY_DRAFT
+  article: Rule 18
+  summary: 'Responsibilities: power vessel shall keep out of the way of constrained_by_draft
+    vessel (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - power
+    - eq:
+      - target.vessel_class
+      - constrained_by_draft
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_POWER_GIVEWAY_TO_FISHING
+  article: Rule 18
+  summary: 'Responsibilities: power vessel shall keep out of the way of fishing vessel
+    (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - power
+    - eq:
+      - target.vessel_class
+      - fishing
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'
+- id: COLREG_R18_POWER_GIVEWAY_TO_SAILING
+  article: Rule 18
+  summary: 'Responsibilities: power vessel shall keep out of the way of sailing vessel
+    (operationalized).'
+  applicability:
+    and:
+    - ne:
+      - visibility
+      - restricted
+    - eq:
+      - ownship.vessel_class
+      - power
+    - eq:
+      - target.vessel_class
+      - sailing
+    - in:
+      - encounter_type
+      - - crossing
+        - head_on
+        - overtaking
+        - other
+  deontic:
+    subject: ownship
+    role: GIVE_WAY
+    modality: OBLIGATORY
+    strength: hard
+  actions:
+    maneuver:
+      allowed:
+      - primitive: TURN_STARBOARD
+        params:
+          min_delta_cog_deg: 10
+      - primitive: REDUCE_SPEED
+        params:
+          min_decel: 0.1
+      forbidden: []
+    signals:
+      lights_shapes_required: []
+      lights_shapes_forbidden: []
+      sounds_required: []
+      sounds_forbidden: []
+  evidence_requirements:
+  - visibility
+  - ownship.vessel_class
+  - target.vessel_class
+  - encounter_type
+  text_ref: 'Rule 18: Responsibilities between vessels (simplified priority-based
+    operationalization).'

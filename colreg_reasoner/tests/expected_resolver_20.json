@@ -1,0 +1,672 @@
+{
+  "crossing_power_power_port_risk": {
+    "kept_rules": [
+      "COLREG_R15_CROSSING_STANDON_TARGET_PORT",
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R17A1_STANDON_MAINTAIN",
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R34_IN_SIGHT_TURN_PORT_SOUND",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+      "COLREG_R08_POSITIVE_ACTION_WHEN_RISK"
+    ],
+    "lights_required": [
+      "LIGHT_MASTHEAD",
+      "LIGHT_SIDELIGHTS",
+      "LIGHT_STERN"
+    ],
+    "maneuver_allowed": [
+      "ASSESS_RISK",
+      "KEEP_LOOKOUT",
+      "MAINTAIN_COURSE_SPEED",
+      "POSITIVE_ACTION",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED",
+      "TURN_STARBOARD"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [
+      "SOUND_2_SHORT"
+    ],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R15_CROSSING_STANDON_TARGET_PORT",
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R17A1_STANDON_MAINTAIN",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R34_IN_SIGHT_TURN_PORT_SOUND",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+      "COLREG_R08_POSITIVE_ACTION_WHEN_RISK"
+    ]
+  },
+  "crossing_power_power_starboard_risk": {
+    "kept_rules": [
+      "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R34_IN_SIGHT_TURN_STARBOARD_SOUND",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+      "COLREG_R08_POSITIVE_ACTION_WHEN_RISK"
+    ],
+    "lights_required": [
+      "LIGHT_MASTHEAD",
+      "LIGHT_SIDELIGHTS",
+      "LIGHT_STERN"
+    ],
+    "maneuver_allowed": [
+      "ASSESS_RISK",
+      "KEEP_LOOKOUT",
+      "POSITIVE_ACTION",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED",
+      "TURN_STARBOARD"
+    ],
+    "maneuver_forbidden": [
+      "TURN_PORT"
+    ],
+    "sounds_required": [
+      "SOUND_1_SHORT"
+    ],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R34_IN_SIGHT_TURN_STARBOARD_SOUND",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+      "COLREG_R08_POSITIVE_ACTION_WHEN_RISK"
+    ]
+  },
+  "headon_power_power": {
+    "kept_rules": [
+      "COLREG_R14_HEADON_ALTER_STARBOARD",
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R34_IN_SIGHT_TURN_STARBOARD_SOUND",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R07_RISK_OF_COLLISION_ASSESS"
+    ],
+    "lights_required": [
+      "LIGHT_MASTHEAD",
+      "LIGHT_SIDELIGHTS",
+      "LIGHT_STERN"
+    ],
+    "maneuver_allowed": [
+      "ASSESS_RISK",
+      "KEEP_LOOKOUT",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED",
+      "TURN_STARBOARD"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [
+      "SOUND_1_SHORT"
+    ],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R14_HEADON_ALTER_STARBOARD",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R34_IN_SIGHT_TURN_STARBOARD_SOUND",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R07_RISK_OF_COLLISION_ASSESS"
+    ]
+  },
+  "lights_cbd": {
+    "kept_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R28_CBD_LIGHTS_SHAPES",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ],
+    "lights_required": [
+      "LIGHT_THREE_ALL_ROUND_RED",
+      "SHAPE_CYLINDER"
+    ],
+    "maneuver_allowed": [
+      "KEEP_LOOKOUT",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R28_CBD_LIGHTS_SHAPES",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ]
+  },
+  "lights_fishing_other": {
+    "kept_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R26_FISHING_OTHER_LIGHTS_SHAPES",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ],
+    "lights_required": [
+      "LIGHT_RED_OVER_WHITE",
+      "SHAPE_TWO_CONES_APEX"
+    ],
+    "maneuver_allowed": [
+      "KEEP_LOOKOUT",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R26_FISHING_OTHER_LIGHTS_SHAPES",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ]
+  },
+  "lights_nuc": {
+    "kept_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R27_NUC_LIGHTS_SHAPES",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ],
+    "lights_required": [
+      "LIGHT_TWO_ALL_ROUND_RED",
+      "SHAPE_TWO_BALLS"
+    ],
+    "maneuver_allowed": [
+      "KEEP_LOOKOUT",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R27_NUC_LIGHTS_SHAPES",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ]
+  },
+  "lights_power": {
+    "kept_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ],
+    "lights_required": [
+      "LIGHT_MASTHEAD",
+      "LIGHT_SIDELIGHTS",
+      "LIGHT_STERN"
+    ],
+    "maneuver_allowed": [
+      "KEEP_LOOKOUT",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ]
+  },
+  "lights_ram": {
+    "kept_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R27_RAM_LIGHTS_SHAPES",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ],
+    "lights_required": [
+      "LIGHT_RED_WHITE_RED",
+      "SHAPE_BALL_DIAMOND_BALL"
+    ],
+    "maneuver_allowed": [
+      "KEEP_LOOKOUT",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R27_RAM_LIGHTS_SHAPES",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ]
+  },
+  "narrow_channel_crossing_impedes": {
+    "kept_rules": [
+      "COLREG_R9A_KEEP_STARBOARD_LIMIT",
+      "COLREG_R9B_SMALL_OR_SAILING_NOT_IMPEDE",
+      "COLREG_R9D_CROSSING_NOT_IMPEDE",
+      "COLREG_R9_APPLIES",
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R25_SAILING_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ],
+    "lights_required": [
+      "LIGHT_SIDELIGHTS",
+      "LIGHT_STERN"
+    ],
+    "maneuver_allowed": [
+      "KEEP_LOOKOUT",
+      "KEEP_TO_STARBOARD_SIDE",
+      "MAINTAIN_COURSE_SPEED",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED",
+      "TURN_STARBOARD"
+    ],
+    "maneuver_forbidden": [
+      "IMPEDE"
+    ],
+    "sounds_required": [],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R25_SAILING_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R9A_KEEP_STARBOARD_LIMIT",
+      "COLREG_R9B_SMALL_OR_SAILING_NOT_IMPEDE",
+      "COLREG_R9D_CROSSING_NOT_IMPEDE",
+      "COLREG_R9_APPLIES"
+    ]
+  },
+  "narrow_channel_keep_starboard": {
+    "kept_rules": [
+      "COLREG_R9A_KEEP_STARBOARD_LIMIT",
+      "COLREG_R9_APPLIES",
+      "COLREG_R14_HEADON_ALTER_STARBOARD",
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R07_RISK_OF_COLLISION_ASSESS"
+    ],
+    "lights_required": [
+      "LIGHT_MASTHEAD",
+      "LIGHT_SIDELIGHTS",
+      "LIGHT_STERN"
+    ],
+    "maneuver_allowed": [
+      "ASSESS_RISK",
+      "KEEP_LOOKOUT",
+      "KEEP_TO_STARBOARD_SIDE",
+      "MAINTAIN_COURSE_SPEED",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED",
+      "TURN_STARBOARD"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R14_HEADON_ALTER_STARBOARD",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+      "COLREG_R9A_KEEP_STARBOARD_LIMIT",
+      "COLREG_R9_APPLIES"
+    ]
+  },
+  "overtaking_power": {
+    "kept_rules": [
+      "COLREG_R13_OVERTAKING_GIVEWAY",
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R07_RISK_OF_COLLISION_ASSESS"
+    ],
+    "lights_required": [
+      "LIGHT_MASTHEAD",
+      "LIGHT_SIDELIGHTS",
+      "LIGHT_STERN"
+    ],
+    "maneuver_allowed": [
+      "ASSESS_RISK",
+      "KEEP_LOOKOUT",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED",
+      "TURN_STARBOARD"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R13_OVERTAKING_GIVEWAY",
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R07_RISK_OF_COLLISION_ASSESS"
+    ]
+  },
+  "pilot_lights": {
+    "kept_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R29_PILOT_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ],
+    "lights_required": [
+      "LIGHT_MASTHEAD",
+      "LIGHT_SIDELIGHTS",
+      "LIGHT_STERN",
+      "LIGHT_WHITE_OVER_RED"
+    ],
+    "maneuver_allowed": [
+      "KEEP_LOOKOUT",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R29_PILOT_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ]
+  },
+  "restricted_aground": {
+    "kept_rules": [
+      "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+      "COLREG_R35_RESTRICTED_AGROUND_SOUND",
+      "COLREG_R30_AGROUND_LIGHTS_SHAPES",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ],
+    "lights_required": [
+      "LIGHT_ALL_ROUND_WHITE",
+      "LIGHT_TWO_ALL_ROUND_RED",
+      "SHAPE_TWO_BALLS"
+    ],
+    "maneuver_allowed": [
+      "KEEP_LOOKOUT",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [
+      "SOUND_BELL_AND_GONG"
+    ],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+      "COLREG_R30_AGROUND_LIGHTS_SHAPES",
+      "COLREG_R35_RESTRICTED_AGROUND_SOUND",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ]
+  },
+  "restricted_anchor": {
+    "kept_rules": [
+      "COLREG_R19_ENGINES_READY",
+      "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+      "COLREG_R35_RESTRICTED_ANCHOR_SOUND",
+      "COLREG_R30_ANCHOR_LIGHTS_SHAPES",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ],
+    "lights_required": [
+      "LIGHT_ALL_ROUND_WHITE",
+      "SHAPE_BALL"
+    ],
+    "maneuver_allowed": [
+      "KEEP_LOOKOUT",
+      "MAINTAIN_COURSE_SPEED",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [
+      "SOUND_BELL_RAPID"
+    ],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R19_ENGINES_READY",
+      "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+      "COLREG_R30_ANCHOR_LIGHTS_SHAPES",
+      "COLREG_R35_RESTRICTED_ANCHOR_SOUND",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ]
+  },
+  "restricted_power_underway_making_way": {
+    "kept_rules": [
+      "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+      "COLREG_R19_ENGINES_READY",
+      "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+      "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R07_RISK_OF_COLLISION_ASSESS"
+    ],
+    "lights_required": [
+      "LIGHT_MASTHEAD",
+      "LIGHT_SIDELIGHTS",
+      "LIGHT_STERN"
+    ],
+    "maneuver_allowed": [
+      "ASSESS_RISK",
+      "KEEP_LOOKOUT",
+      "MAINTAIN_COURSE_SPEED",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED",
+      "TURN_STARBOARD"
+    ],
+    "maneuver_forbidden": [
+      "TURN_PORT"
+    ],
+    "sounds_required": [
+      "SOUND_PROLONGED_EVERY_2MIN"
+    ],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+      "COLREG_R19_ENGINES_READY",
+      "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R07_RISK_OF_COLLISION_ASSESS"
+    ]
+  },
+  "restricted_sound_sailing": {
+    "kept_rules": [
+      "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+      "COLREG_R35_RESTRICTED_SPECIAL_VESSEL_SOUND",
+      "COLREG_R25_SAILING_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ],
+    "lights_required": [
+      "LIGHT_SIDELIGHTS",
+      "LIGHT_STERN"
+    ],
+    "maneuver_allowed": [
+      "KEEP_LOOKOUT",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [
+      "SOUND_PROLONGED_PLUS_2_SHORT"
+    ],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+      "COLREG_R25_SAILING_UNDERWAY_LIGHTS",
+      "COLREG_R35_RESTRICTED_SPECIAL_VESSEL_SOUND",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ]
+  },
+  "sailing_diff_tack_port_giveway": {
+    "kept_rules": [
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R12_SAILING_DIFF_TACK_WIND_PORT_GIVEWAY",
+      "COLREG_R25_SAILING_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ],
+    "lights_required": [
+      "LIGHT_SIDELIGHTS",
+      "LIGHT_STERN"
+    ],
+    "maneuver_allowed": [
+      "KEEP_LOOKOUT",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED",
+      "TURN_STARBOARD"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R12_SAILING_DIFF_TACK_WIND_PORT_GIVEWAY",
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R25_SAILING_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ]
+  },
+  "stand_on_may_act": {
+    "kept_rules": [
+      "COLREG_R15_CROSSING_STANDON_TARGET_PORT",
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R17A1_STANDON_MAINTAIN",
+      "COLREG_R17A2_STANDON_MAY_ACT_IF_GIVEWAY_NOT_ACTING",
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ],
+    "lights_required": [
+      "LIGHT_MASTHEAD",
+      "LIGHT_SIDELIGHTS",
+      "LIGHT_STERN"
+    ],
+    "maneuver_allowed": [
+      "KEEP_LOOKOUT",
+      "MAINTAIN_COURSE_SPEED",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED",
+      "TURN_STARBOARD"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R15_CROSSING_STANDON_TARGET_PORT",
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R17A1_STANDON_MAINTAIN",
+      "COLREG_R17A2_STANDON_MAY_ACT_IF_GIVEWAY_NOT_ACTING",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ]
+  },
+  "towing_light": {
+    "kept_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R24_TOWING_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ],
+    "lights_required": [
+      "LIGHT_MASTHEAD",
+      "LIGHT_SIDELIGHTS",
+      "LIGHT_STERN",
+      "LIGHT_TOWING"
+    ],
+    "maneuver_allowed": [
+      "KEEP_LOOKOUT",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R24_TOWING_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ]
+  },
+  "tss_follow_lane": {
+    "kept_rules": [
+      "COLREG_R10B1_PROCEED_IN_LANE_DIRECTION",
+      "COLREG_R10_APPLIES",
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ],
+    "lights_required": [
+      "LIGHT_MASTHEAD",
+      "LIGHT_SIDELIGHTS",
+      "LIGHT_STERN"
+    ],
+    "maneuver_allowed": [
+      "KEEP_LOOKOUT",
+      "MAINTAIN_COURSE_SPEED",
+      "PROCEED_SAFE_SPEED",
+      "REDUCE_SPEED"
+    ],
+    "maneuver_forbidden": [],
+    "sounds_required": [],
+    "suppressed_rules": [],
+    "triggered_rules": [
+      "COLREG_R10B1_PROCEED_IN_LANE_DIRECTION",
+      "COLREG_R10_APPLIES",
+      "COLREG_R11_IN_SIGHT_APPLIES",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED"
+    ]
+  }
+}

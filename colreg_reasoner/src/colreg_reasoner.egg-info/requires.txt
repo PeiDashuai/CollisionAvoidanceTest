@@ -1,0 +1,5 @@
+colreg-kernel>=0.1.0
+pyyaml>=6.0
+
+[test]
+pytest>=7.4

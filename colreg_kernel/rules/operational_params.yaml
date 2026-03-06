@@ -1,0 +1,41 @@
+# Operationalization defaults for ambiguous COLREG concepts.
+# These parameters are designed for benchmark automation (scenario generation, labeling, regression tests).
+# They are not the only legally correct interpretation; they are tunable and should be used with sensitivity analysis.
+
+risk:
+  # Risk of collision if 0 <= TCPA <= tcpa_risk_s AND CPA <= max(dcpa_risk_m, dcpa_risk_len_factor * L)
+  tcpa_risk_s: 900            # 15 min
+  dcpa_risk_nm: 0.5           # 0.5 nautical miles (baseline)
+  dcpa_risk_len_factor: 6.0   # * ownship length
+
+imminent:
+  # Collision imminent if 0 <= TCPA <= tcpa_imminent_s AND CPA <= max(dcpa_imminent_m, dcpa_imminent_len_factor * L)
+  tcpa_imminent_s: 240        # 4 min
+  dcpa_imminent_nm: 0.2       # 0.2 nm
+  dcpa_imminent_len_factor: 4.0
+
+early_substantial:
+  tcpa_early_s: 600           # 10 min
+  substantial_turn_deg: 15.0  # >= 15 deg
+  substantial_speed_drop_ratio: 0.2
+
+safe_speed:
+  restricted_speed_ratio: 0.7
+  risk_speed_ratio: 0.6
+  tcpa_slow_s: 480            # 8 min
+
+tss_crossing:
+  right_angle_deg: 90.0
+  right_angle_tol_deg: 20.0   # allow 70..110
+
+impede:
+  t_imp_s: 720                # 12 min
+  open:
+    dcpa_imp_nm: 0.3
+    dcpa_imp_len_factor: 4.0
+  narrow_channel:
+    dcpa_imp_nm: 0.4
+    dcpa_imp_len_factor: 5.0
+  tss:
+    dcpa_imp_nm: 0.35
+    dcpa_imp_len_factor: 4.5
