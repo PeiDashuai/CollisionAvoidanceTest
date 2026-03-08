@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from typing import Dict, List, Literal, Optional
 import numpy as np
 
-from .sim_kinematics import VesselState, _heading_to_unit
+from .sim_kinematics import VesselState
 
 
 BearingSector = Literal[
@@ -38,10 +38,13 @@ def _wrap_deg(x: float) -> float:
     return x if x >= 0 else x + 360.0
 
 
+def _heading_to_unit(heading_deg: float) -> np.ndarray:
+    rad = np.deg2rad(heading_deg)
+    return np.array([np.sin(rad), np.cos(rad)], dtype=float)
+
+
 def _bearing_sector(bearing_deg: float) -> BearingSector:
-    # bearing_deg: 0 ahead, 90 starboard beam, 180 astern, 270 port beam
     b = _wrap_deg(bearing_deg)
-    # 8 sectors, 45° each
     if b < 22.5 or b >= 337.5:
         return "ahead"
     if 22.5 <= b < 67.5:
@@ -60,52 +63,72 @@ def _bearing_sector(bearing_deg: float) -> BearingSector:
 
 
 def _relative_bearing(own_heading_deg: float, rel_vec_xy: np.ndarray) -> float:
-    # bearing relative to ownship heading: 0 ahead, 90 starboard, 180 astern, 270 port
-    # own heading unit:
+    """
+    Bearing relative to ownship heading:
+    0 ahead, 90 starboard, 180 astern, 270 port
+    """
     u = _heading_to_unit(own_heading_deg)
-    # right unit:
-    r = np.array([u[1], -u[0]], dtype=float)  # rotate u clockwise
+    r = np.array([u[1], -u[0]], dtype=float)  # right
     forward = float(np.dot(rel_vec_xy, u))
     right = float(np.dot(rel_vec_xy, r))
     ang = np.rad2deg(np.arctan2(right, forward))
     return _wrap_deg(ang)
 
 
-def cpa_tcpa_from_states(own: VesselState, tgt: VesselState) -> tuple[float, float]:
-    p = np.array([own.x_m, own.y_m], dtype=float)
-    q = np.array([tgt.x_m, tgt.y_m], dtype=float)
-    v = _heading_to_unit(own.heading_deg) * own.speed_mps
-    w = _heading_to_unit(tgt.heading_deg) * tgt.speed_mps
+def cpa_tcpa_from_states(own: VesselState, tgt: VesselState) -> tuple[float, float, float]:
+    """
+    Returns:
+      dcpa_future, tcpa_future, tcpa_raw
 
-    r0 = q - p
-    vr = w - v
-    vr2 = float(np.dot(vr, vr))
-    if vr2 < 1e-9:
-        # nearly same velocity
-        return float(np.linalg.norm(r0)), float("inf")
+    tcpa_raw can be negative (closest approach in the past).
+    tcpa_future is clamped to >=0 for downstream rule features.
+    """
+    p_own = np.array([own.x_m, own.y_m], dtype=float)
+    p_tgt = np.array([tgt.x_m, tgt.y_m], dtype=float)
 
-    tcpa = -float(np.dot(r0, vr)) / vr2
-    tcpa = max(tcpa, 0.0)  # only future
-    cpa_vec = r0 + vr * tcpa
+    v_own = _heading_to_unit(own.heading_deg) * float(own.speed_mps)
+    v_tgt = _heading_to_unit(tgt.heading_deg) * float(tgt.speed_mps)
+
+    r = p_tgt - p_own
+    v_rel = v_tgt - v_own
+    v_rel2 = float(np.dot(v_rel, v_rel))
+
+    if v_rel2 < 1e-9:
+        return float(np.linalg.norm(r)), float("inf"), float("inf")
+
+    tcpa_raw = -float(np.dot(r, v_rel)) / v_rel2
+    tcpa_future = max(tcpa_raw, 0.0)
+    cpa_vec = r + v_rel * tcpa_future
     dcpa = float(np.linalg.norm(cpa_vec))
-    return dcpa, tcpa
+    return dcpa, tcpa_future, tcpa_raw
 
 
-def infer_encounter_type(own: VesselState, tgt: VesselState, rel_bearing_deg: float) -> EncounterType:
-    # very simple heuristic:
-    # - overtaking if target is roughly ahead of ownship? Actually overtaking is ownship approaching target from >112.5° abaft target beam.
-    # Here we approximate using rel bearing from ownship perspective:
-    #   if target is within astern sector => "overtaking" (ownship sees target astern => ownship being overtaken)
-    # Better: use target's relative bearing of ownship, but we don't have it. Keep minimal.
-    # - head_on if headings opposite-ish and target ahead-ish
+def infer_encounter_type(
+    own: VesselState,
+    tgt: VesselState,
+    rel_bearing_deg: float,
+    tcpa_s: float,
+    closing: bool,
+) -> EncounterType:
+    sector = _bearing_sector(rel_bearing_deg)
     hdg_diff = abs(_wrap_deg(own.heading_deg - tgt.heading_deg))
     hdg_diff = min(hdg_diff, 360.0 - hdg_diff)
 
-    if (hdg_diff > 150.0) and (_bearing_sector(rel_bearing_deg) in ["ahead", "starboard_bow", "port_bow"]):
+    # head-on
+    if closing and np.isfinite(tcpa_s) and tcpa_s > 0 and hdg_diff > 150.0 and sector in ["ahead", "starboard_bow", "port_bow"]:
         return "head_on"
 
-    # approximate overtaking: target is close to ahead in target frame is hard; use own rel bearing near ahead but target is slower and closing
-    return "crossing" if _bearing_sector(rel_bearing_deg) not in ["astern"] else "overtaking"
+    # overtaking (simplified)
+    if closing and np.isfinite(tcpa_s) and tcpa_s > 0 and hdg_diff < 25.0 and sector in ["ahead", "starboard_bow", "port_bow"] and own.speed_mps > tgt.speed_mps:
+        return "overtaking"
+
+    # crossing
+    if closing and np.isfinite(tcpa_s) and tcpa_s > 0 and sector in [
+        "starboard_bow", "starboard_beam", "port_bow", "port_beam"
+    ]:
+        return "crossing"
+
+    return "other"
 
 
 def compute_pairwise_geometry(
@@ -124,21 +147,15 @@ def compute_pairwise_geometry(
     sector = _bearing_sector(rel_bearing)
     is_starboard = sector in ["starboard_bow", "starboard_beam", "starboard_quarter"]
 
-    dcpa, tcpa = cpa_tcpa_from_states(own, tgt)
-    # closing: range decreasing now? approximate by dot(r0, vr) < 0
-    p = np.array([own.x_m, own.y_m], dtype=float)
-    q = np.array([tgt.x_m, tgt.y_m], dtype=float)
-    v = _heading_to_unit(own.heading_deg) * own.speed_mps
-    w = _heading_to_unit(tgt.heading_deg) * tgt.speed_mps
-    r0 = q - p
-    vr = w - v
-    closing = float(np.dot(r0, vr)) < 0.0
+    dcpa, tcpa_future, tcpa_raw = cpa_tcpa_from_states(own, tgt)
 
-    encounter = infer_encounter_type(own, tgt, rel_bearing)
+    # closing semantics: only if future closest approach is ahead in time
+    closing = bool(np.isfinite(tcpa_raw) and tcpa_raw > 0.0)
+
+    encounter = infer_encounter_type(own, tgt, rel_bearing, tcpa_future, closing)
 
     tss_angle = None
     if domain == "tss" and tss_lane_heading_deg is not None:
-        # crossing angle: abs(own heading - lane heading) modulo 180
         d = abs(_wrap_deg(own.heading_deg - tss_lane_heading_deg))
         d = min(d, 360.0 - d)
         d = min(d, 180.0 - abs(d - 180.0))
@@ -149,8 +166,8 @@ def compute_pairwise_geometry(
         is_target_on_starboard=is_starboard,
         relative_bearing_deg=float(rel_bearing),
         relative_bearing_sector=sector,
-        closing=bool(closing),
+        closing=closing,
         cpa_m=float(dcpa),
-        tcpa_s=float(tcpa),
+        tcpa_s=float(tcpa_future),
         tss_crossing_angle_deg=tss_angle,
     )

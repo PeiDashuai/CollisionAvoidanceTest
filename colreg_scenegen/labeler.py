@@ -29,6 +29,10 @@ def _default_rules_path() -> str:
         raise FileNotFoundError(f"Cannot locate rules YAML at: {rules_path}")
     return str(rules_path)
 
+def _snapshot_index_for_label(scene) -> int:
+    k = int(round(30.0 / scene.dt_s))
+    k = max(0, min(int(scene.duration_s / scene.dt_s) - 1, k))
+    return k
 
 def label_scene_multi(
     scene: SceneSpec,
@@ -48,11 +52,13 @@ def label_scene_multi(
     per_target = []
 
     for tgt in scene.targets:
+        label_k = _snapshot_index_for_label(scene)
+
         geom = compute_pairwise_geometry(
             tracks,
             ownship_id=scene.ownship.vessel_id,
             target_id=tgt.vessel_id,
-            t_index=-1,
+            t_index=label_k,
             domain=scene.domain.value,
             tss_lane_heading_deg=scene.tss_lane_heading_deg,
         )

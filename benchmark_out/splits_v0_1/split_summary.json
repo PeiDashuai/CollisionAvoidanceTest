@@ -1,0 +1,15 @@
+{
+  "train": {
+    "num_samples": 4,
+    "pattern::restricted_multi": 4,
+    "difficulty::hard": 4
+  },
+  "val": {
+    "num_samples": 0
+  },
+  "test": {
+    "num_samples": 1,
+    "pattern::restricted_multi": 1,
+    "difficulty::hard": 1
+  }
+}

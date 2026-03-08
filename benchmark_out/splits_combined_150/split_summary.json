@@ -1,0 +1,23 @@
+{
+  "train": {
+    "num_samples": 105,
+    "pattern::responsibility_mix": 35,
+    "pattern::restricted_multi": 70,
+    "difficulty::hard": 70,
+    "difficulty::medium": 35
+  },
+  "val": {
+    "num_samples": 15,
+    "pattern::responsibility_mix": 5,
+    "pattern::restricted_multi": 10,
+    "difficulty::hard": 10,
+    "difficulty::medium": 5
+  },
+  "test": {
+    "num_samples": 30,
+    "pattern::responsibility_mix": 10,
+    "pattern::restricted_multi": 20,
+    "difficulty::hard": 20,
+    "difficulty::medium": 10
+  }
+}

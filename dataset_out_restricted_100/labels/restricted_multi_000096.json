@@ -1,0 +1,1076 @@
+{
+  "scene": {
+    "seed": 100,
+    "domain": "restricted",
+    "visibility": "restricted",
+    "in_sight": false,
+    "duration_s": 120.0,
+    "dt_s": 1.0,
+    "ownship": {
+      "vessel_id": "ownship",
+      "vessel_class": "power",
+      "length_m": 98.0,
+      "nav_status": "underway_making_way",
+      "x_m": 0.0,
+      "y_m": 0.0,
+      "heading_deg": 0.0,
+      "speed_mps": 6.720465348142975,
+      "fishing_mode": "none",
+      "is_towing": false,
+      "tow_length_m": null,
+      "pilot_on_duty": false,
+      "sailing_using_engine": false
+    },
+    "targets": [
+      {
+        "vessel_id": "t1",
+        "vessel_class": "power",
+        "length_m": 32.0,
+        "nav_status": "underway_making_way",
+        "x_m": 454.50155594829937,
+        "y_m": 284.7697790698761,
+        "heading_deg": 270.0,
+        "speed_mps": 6.720940793594177,
+        "fishing_mode": "none",
+        "is_towing": false,
+        "tow_length_m": null,
+        "pilot_on_duty": false,
+        "sailing_using_engine": false
+      },
+      {
+        "vessel_id": "t2",
+        "vessel_class": "power",
+        "length_m": 85.0,
+        "nav_status": "underway_making_way",
+        "x_m": 579.1319525971903,
+        "y_m": -169.01681215228962,
+        "heading_deg": 352.0,
+        "speed_mps": 2.561636037071505,
+        "fishing_mode": "none",
+        "is_towing": false,
+        "tow_length_m": null,
+        "pilot_on_duty": false,
+        "sailing_using_engine": false
+      },
+      {
+        "vessel_id": "t3",
+        "vessel_class": "power",
+        "length_m": 138.0,
+        "nav_status": "underway_making_way",
+        "x_m": -507.19186133133735,
+        "y_m": -388.3740283019719,
+        "heading_deg": 172.0,
+        "speed_mps": 3.4164630388658037,
+        "fishing_mode": "none",
+        "is_towing": false,
+        "tow_length_m": null,
+        "pilot_on_duty": false,
+        "sailing_using_engine": false
+      }
+    ],
+    "tss_lane_heading_deg": 90.0
+  },
+  "per_target": [
+    {
+      "target_id": "t1",
+      "features": {
+        "visibility": "restricted",
+        "area_type": "open",
+        "traffic_lane_relation": "not_in_tss",
+        "ownship": {
+          "vessel_class": "power",
+          "length_m": 98.0,
+          "nav_status": "underway_making_way",
+          "is_towing": false,
+          "tow_length_m": null,
+          "is_pushing": null,
+          "pilot_on_duty": false,
+          "fishing_mode": "none",
+          "sailing_using_engine": false,
+          "sailing_tack": null,
+          "is_windward": null
+        },
+        "target": {
+          "vessel_class": "power",
+          "length_m": 32.0,
+          "nav_status": "underway_making_way",
+          "is_towing": false,
+          "tow_length_m": null,
+          "is_pushing": null,
+          "pilot_on_duty": false,
+          "fishing_mode": "none",
+          "sailing_using_engine": false,
+          "sailing_tack": null,
+          "is_windward": null
+        },
+        "encounter_type": "crossing",
+        "relative_bearing_sector": "starboard_beam",
+        "is_target_on_starboard": true,
+        "closing": true,
+        "sailing_tack_relation": null,
+        "in_sight": false,
+        "risk_of_collision": true,
+        "give_way_taking_action": null,
+        "collision_imminent": true,
+        "being_overtaken": null,
+        "intends_cross_channel": null,
+        "impedes_channel_vessel": null,
+        "agreement_received_for_overtake": null,
+        "intends_anchor": null,
+        "tss_crossing_angle_deg": null,
+        "impedes_tss_traffic": null,
+        "intent_turn": null,
+        "intent_overtake": null,
+        "intent_astern_propulsion": null,
+        "cpa_m": 119.9999999999996,
+        "tcpa_s": 24.999999999999968
+      },
+      "triggered_rules": [
+        "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+        "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+        "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+        "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+        "COLREG_R19_ENGINES_READY",
+        "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+        "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+        "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+        "COLREG_R05_LOOKOUT",
+        "COLREG_R06_SAFE_SPEED",
+        "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+        "COLREG_R08_POSITIVE_ACTION_WHEN_RISK"
+      ]
+    },
+    {
+      "target_id": "t2",
+      "features": {
+        "visibility": "restricted",
+        "area_type": "open",
+        "traffic_lane_relation": "not_in_tss",
+        "ownship": {
+          "vessel_class": "power",
+          "length_m": 98.0,
+          "nav_status": "underway_making_way",
+          "is_towing": false,
+          "tow_length_m": null,
+          "is_pushing": null,
+          "pilot_on_duty": false,
+          "fishing_mode": "none",
+          "sailing_using_engine": false,
+          "sailing_tack": null,
+          "is_windward": null
+        },
+        "target": {
+          "vessel_class": "power",
+          "length_m": 85.0,
+          "nav_status": "underway_making_way",
+          "is_towing": false,
+          "tow_length_m": null,
+          "is_pushing": null,
+          "pilot_on_duty": false,
+          "fishing_mode": "none",
+          "sailing_using_engine": false,
+          "sailing_tack": null,
+          "is_windward": null
+        },
+        "encounter_type": "other",
+        "relative_bearing_sector": "starboard_quarter",
+        "is_target_on_starboard": true,
+        "closing": false,
+        "sailing_tack_relation": null,
+        "in_sight": false,
+        "risk_of_collision": true,
+        "give_way_taking_action": null,
+        "collision_imminent": false,
+        "being_overtaken": null,
+        "intends_cross_channel": null,
+        "impedes_channel_vessel": null,
+        "agreement_received_for_overtake": null,
+        "intends_anchor": null,
+        "tss_crossing_angle_deg": null,
+        "impedes_tss_traffic": null,
+        "intent_turn": null,
+        "intent_overtake": null,
+        "intent_astern_propulsion": null,
+        "cpa_m": 640.2092423845388,
+        "tcpa_s": 0.0
+      },
+      "triggered_rules": [
+        "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+        "COLREG_R19_ENGINES_READY",
+        "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+        "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+        "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+        "COLREG_R05_LOOKOUT",
+        "COLREG_R06_SAFE_SPEED",
+        "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+        "COLREG_R08_POSITIVE_ACTION_WHEN_RISK"
+      ]
+    },
+    {
+      "target_id": "t3",
+      "features": {
+        "visibility": "restricted",
+        "area_type": "open",
+        "traffic_lane_relation": "not_in_tss",
+        "ownship": {
+          "vessel_class": "power",
+          "length_m": 98.0,
+          "nav_status": "underway_making_way",
+          "is_towing": false,
+          "tow_length_m": null,
+          "is_pushing": null,
+          "pilot_on_duty": false,
+          "fishing_mode": "none",
+          "sailing_using_engine": false,
+          "sailing_tack": null,
+          "is_windward": null
+        },
+        "target": {
+          "vessel_class": "power",
+          "length_m": 138.0,
+          "nav_status": "underway_making_way",
+          "is_towing": false,
+          "tow_length_m": null,
+          "is_pushing": null,
+          "pilot_on_duty": false,
+          "fishing_mode": "none",
+          "sailing_using_engine": false,
+          "sailing_tack": null,
+          "is_windward": null
+        },
+        "encounter_type": "other",
+        "relative_bearing_sector": "port_quarter",
+        "is_target_on_starboard": false,
+        "closing": false,
+        "sailing_tack_relation": null,
+        "in_sight": false,
+        "risk_of_collision": true,
+        "give_way_taking_action": null,
+        "collision_imminent": false,
+        "being_overtaken": null,
+        "intends_cross_channel": null,
+        "impedes_channel_vessel": null,
+        "agreement_received_for_overtake": null,
+        "intends_anchor": null,
+        "tss_crossing_angle_deg": null,
+        "impedes_tss_traffic": null,
+        "intent_turn": null,
+        "intent_overtake": null,
+        "intent_astern_propulsion": null,
+        "cpa_m": 849.1926680702314,
+        "tcpa_s": 0.0
+      },
+      "triggered_rules": [
+        "COLREG_R19D3_AVOID_TURN_TOWARD_PORT_ABEAM_OR_AFT",
+        "COLREG_R19_ENGINES_READY",
+        "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+        "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+        "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+        "COLREG_R05_LOOKOUT",
+        "COLREG_R06_SAFE_SPEED",
+        "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+        "COLREG_R08_POSITIVE_ACTION_WHEN_RISK"
+      ]
+    }
+  ],
+  "global_resolution": {
+    "kept_rules": [
+      "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+      "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+      "COLREG_R19D3_AVOID_TURN_TOWARD_PORT_ABEAM_OR_AFT",
+      "COLREG_R19_ENGINES_READY",
+      "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+      "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+      "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+      "COLREG_R08_POSITIVE_ACTION_WHEN_RISK"
+    ],
+    "suppressed_rules": [
+      {
+        "rule_id": "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+        "reason": "maneuver_allowed TURN_STARBOARD blocked by higher-priority forbidden"
+      },
+      {
+        "rule_id": "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+        "reason": "maneuver_allowed TURN_STARBOARD blocked by higher-priority forbidden"
+      },
+      {
+        "rule_id": "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+        "reason": "maneuver_allowed TURN_STARBOARD blocked by higher-priority forbidden"
+      }
+    ],
+    "labels": {
+      "maneuver_allowed": {
+        "ASSESS_RISK": [
+          "COLREG_R07_RISK_OF_COLLISION_ASSESS"
+        ],
+        "KEEP_LOOKOUT": [
+          "COLREG_R05_LOOKOUT"
+        ],
+        "MAINTAIN_COURSE_SPEED": [
+          "COLREG_R19_ENGINES_READY"
+        ],
+        "POSITIVE_ACTION": [
+          "COLREG_R08_POSITIVE_ACTION_WHEN_RISK"
+        ],
+        "PROCEED_SAFE_SPEED": [
+          "COLREG_R06_SAFE_SPEED"
+        ],
+        "REDUCE_SPEED": [
+          "COLREG_R06_SAFE_SPEED",
+          "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS"
+        ]
+      },
+      "maneuver_forbidden": {
+        "TURN_PORT": [
+          "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "COLREG_R19D3_AVOID_TURN_TOWARD_PORT_ABEAM_OR_AFT"
+        ],
+        "TURN_STARBOARD": [
+          "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT"
+        ]
+      },
+      "lights_required": {
+        "LIGHT_MASTHEAD": [
+          "COLREG_R23_POWER_UNDERWAY_LIGHTS"
+        ],
+        "LIGHT_SIDELIGHTS": [
+          "COLREG_R23_POWER_UNDERWAY_LIGHTS"
+        ],
+        "LIGHT_STERN": [
+          "COLREG_R23_POWER_UNDERWAY_LIGHTS"
+        ]
+      },
+      "lights_forbidden": {},
+      "sounds_required": {
+        "SOUND_PROLONGED_EVERY_2MIN": [
+          "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND"
+        ]
+      },
+      "sounds_forbidden": {}
+    },
+    "explanation_chain": [
+      "Triggered rules: 13",
+      "Priority order: COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN, COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT, COLREG_R19D3_AVOID_TURN_TOWARD_PORT_ABEAM_OR_AFT, COLREG_R19_ENGINES_READY, COLREG_R19_SAFE_SPEED_RESTRICTED_VIS, COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND, COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD, COLREG_R16_EARLY_SUBSTANTIAL_ACTION, COLREG_R23_POWER_UNDERWAY_LIGHTS, COLREG_R05_LOOKOUT",
+      "Suppressed contributions: 3"
+    ],
+    "explanation": {
+      "steps": [
+        {
+          "stage": "domain",
+          "applied_rules": [
+            "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+            "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+            "COLREG_R19D3_AVOID_TURN_TOWARD_PORT_ABEAM_OR_AFT",
+            "COLREG_R19_ENGINES_READY",
+            "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+            "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND"
+          ],
+          "suppressed_rules": [],
+          "notes": [
+            "restricted_visibility"
+          ]
+        },
+        {
+          "stage": "responsibility",
+          "applied_rules": [],
+          "suppressed_rules": [],
+          "notes": []
+        },
+        {
+          "stage": "encounter",
+          "applied_rules": [
+            "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+            "COLREG_R16_EARLY_SUBSTANTIAL_ACTION"
+          ],
+          "suppressed_rules": [
+            "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+            "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+            "COLREG_R08_POSITIVE_ACTION_WHEN_RISK"
+          ],
+          "notes": []
+        },
+        {
+          "stage": "area",
+          "applied_rules": [],
+          "suppressed_rules": [],
+          "notes": []
+        },
+        {
+          "stage": "signals",
+          "applied_rules": [
+            "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+            "COLREG_R23_POWER_UNDERWAY_LIGHTS"
+          ],
+          "suppressed_rules": [],
+          "notes": []
+        }
+      ]
+    },
+    "metrics": {
+      "num_rules": 13,
+      "num_pairs": 78,
+      "num_conflicts": 3,
+      "num_conflicts_maneuver": 3,
+      "num_conflicts_signals": 0,
+      "num_conflicts_domain": 0,
+      "num_tensions": 0,
+      "num_tensions_maneuver": 0,
+      "num_compatible": 63,
+      "complexity_score": 6.0,
+      "tension_shrink": {}
+    },
+    "rule_graph": {
+      "nodes": [
+        "COLREG_R05_LOOKOUT",
+        "COLREG_R06_SAFE_SPEED",
+        "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+        "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+        "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+        "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+        "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+        "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+        "COLREG_R19D3_AVOID_TURN_TOWARD_PORT_ABEAM_OR_AFT",
+        "COLREG_R19_ENGINES_READY",
+        "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+        "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+        "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND"
+      ],
+      "edges": [
+        {
+          "a": "COLREG_R05_LOOKOUT",
+          "b": "COLREG_R06_SAFE_SPEED",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R05_LOOKOUT",
+          "b": "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R05_LOOKOUT",
+          "b": "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R05_LOOKOUT",
+          "b": "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R05_LOOKOUT",
+          "b": "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R05_LOOKOUT",
+          "b": "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R05_LOOKOUT",
+          "b": "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R05_LOOKOUT",
+          "b": "COLREG_R19_ENGINES_READY",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R05_LOOKOUT",
+          "b": "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R05_LOOKOUT",
+          "b": "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R05_LOOKOUT",
+          "b": "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R06_SAFE_SPEED",
+          "b": "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R06_SAFE_SPEED",
+          "b": "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R06_SAFE_SPEED",
+          "b": "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R06_SAFE_SPEED",
+          "b": "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R06_SAFE_SPEED",
+          "b": "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R06_SAFE_SPEED",
+          "b": "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R06_SAFE_SPEED",
+          "b": "COLREG_R19_ENGINES_READY",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R06_SAFE_SPEED",
+          "b": "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R06_SAFE_SPEED",
+          "b": "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R06_SAFE_SPEED",
+          "b": "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "b": "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "b": "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "b": "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "b": "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "b": "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "b": "COLREG_R19_ENGINES_READY",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "b": "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "b": "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "b": "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "b": "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "b": "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "b": "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "b": "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "relation": "CONFLICT",
+          "reason": "MANEUVER_ACTIONS"
+        },
+        {
+          "a": "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "b": "COLREG_R19_ENGINES_READY",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "b": "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "b": "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "b": "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "b": "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "b": "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "b": "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "relation": "CONFLICT",
+          "reason": "MANEUVER_ACTIONS"
+        },
+        {
+          "a": "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "b": "COLREG_R19_ENGINES_READY",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "b": "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "b": "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "b": "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "b": "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "b": "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "relation": "CONFLICT",
+          "reason": "MANEUVER_ACTIONS"
+        },
+        {
+          "a": "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "b": "COLREG_R19_ENGINES_READY",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "b": "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "b": "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "b": "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "b": "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "b": "COLREG_R19_ENGINES_READY",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "b": "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "b": "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "b": "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "b": "COLREG_R19_ENGINES_READY",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "b": "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "b": "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "b": "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R19_ENGINES_READY",
+          "b": "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R19_ENGINES_READY",
+          "b": "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R19_ENGINES_READY",
+          "b": "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "b": "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "b": "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        },
+        {
+          "a": "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "b": "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+          "relation": "COMPATIBLE",
+          "reason": "APPLICABILITY"
+        }
+      ],
+      "adjacency": {
+        "COLREG_R05_LOOKOUT": [
+          "COLREG_R06_SAFE_SPEED",
+          "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "COLREG_R19_ENGINES_READY",
+          "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND"
+        ],
+        "COLREG_R06_SAFE_SPEED": [
+          "COLREG_R05_LOOKOUT",
+          "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "COLREG_R19_ENGINES_READY",
+          "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND"
+        ],
+        "COLREG_R07_RISK_OF_COLLISION_ASSESS": [
+          "COLREG_R05_LOOKOUT",
+          "COLREG_R06_SAFE_SPEED",
+          "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "COLREG_R19_ENGINES_READY",
+          "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND"
+        ],
+        "COLREG_R08_POSITIVE_ACTION_WHEN_RISK": [
+          "COLREG_R05_LOOKOUT",
+          "COLREG_R06_SAFE_SPEED",
+          "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "COLREG_R19_ENGINES_READY",
+          "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND"
+        ],
+        "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD": [
+          "COLREG_R05_LOOKOUT",
+          "COLREG_R06_SAFE_SPEED",
+          "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "COLREG_R19_ENGINES_READY",
+          "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND"
+        ],
+        "COLREG_R16_EARLY_SUBSTANTIAL_ACTION": [
+          "COLREG_R05_LOOKOUT",
+          "COLREG_R06_SAFE_SPEED",
+          "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "COLREG_R19_ENGINES_READY",
+          "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND"
+        ],
+        "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN": [
+          "COLREG_R05_LOOKOUT",
+          "COLREG_R06_SAFE_SPEED",
+          "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "COLREG_R19_ENGINES_READY",
+          "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND"
+        ],
+        "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT": [
+          "COLREG_R05_LOOKOUT",
+          "COLREG_R06_SAFE_SPEED",
+          "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "COLREG_R19_ENGINES_READY",
+          "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND"
+        ],
+        "COLREG_R19D3_AVOID_TURN_TOWARD_PORT_ABEAM_OR_AFT": [],
+        "COLREG_R19_ENGINES_READY": [
+          "COLREG_R05_LOOKOUT",
+          "COLREG_R06_SAFE_SPEED",
+          "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND"
+        ],
+        "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS": [
+          "COLREG_R05_LOOKOUT",
+          "COLREG_R06_SAFE_SPEED",
+          "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "COLREG_R19_ENGINES_READY",
+          "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+          "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND"
+        ],
+        "COLREG_R23_POWER_UNDERWAY_LIGHTS": [
+          "COLREG_R05_LOOKOUT",
+          "COLREG_R06_SAFE_SPEED",
+          "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "COLREG_R19_ENGINES_READY",
+          "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND"
+        ],
+        "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND": [
+          "COLREG_R05_LOOKOUT",
+          "COLREG_R06_SAFE_SPEED",
+          "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+          "COLREG_R08_POSITIVE_ACTION_WHEN_RISK",
+          "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+          "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+          "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+          "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+          "COLREG_R19_ENGINES_READY",
+          "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+          "COLREG_R23_POWER_UNDERWAY_LIGHTS"
+        ]
+      }
+    },
+    "sanity_issues": [],
+    "signals_issues": []
+  },
+  "rules_path": "/home/peidashuai/CollisionAvoidanceTest/colreg_kernel/rules/colregs_atomic.yaml",
+  "meta": {
+    "label_snapshot_s": 30.0,
+    "pattern": "restricted_multi",
+    "difficulty": 6.0,
+    "sampled_metrics": {
+      "num_rules": 13,
+      "num_pairs": 78,
+      "num_conflicts": 3,
+      "num_conflicts_maneuver": 3,
+      "num_conflicts_signals": 0,
+      "num_conflicts_domain": 0,
+      "num_tensions": 0,
+      "num_tensions_maneuver": 0,
+      "num_compatible": 63,
+      "complexity_score": 6.0,
+      "tension_shrink": {}
+    },
+    "kept_rules": [
+      "COLREG_R19D1_AVOID_PORT_TURN_FORWARD_BEAM_NOT_BEING_OVERTAKEN",
+      "COLREG_R19D2_AVOID_TURN_TOWARD_STARBOARD_ABEAM_OR_AFT",
+      "COLREG_R19D3_AVOID_TURN_TOWARD_PORT_ABEAM_OR_AFT",
+      "COLREG_R19_ENGINES_READY",
+      "COLREG_R19_SAFE_SPEED_RESTRICTED_VIS",
+      "COLREG_R35_RESTRICTED_POWER_MAKING_WAY_SOUND",
+      "COLREG_R15_CROSSING_GIVEWAY_TARGET_STARBOARD",
+      "COLREG_R16_EARLY_SUBSTANTIAL_ACTION",
+      "COLREG_R23_POWER_UNDERWAY_LIGHTS",
+      "COLREG_R05_LOOKOUT",
+      "COLREG_R06_SAFE_SPEED",
+      "COLREG_R07_RISK_OF_COLLISION_ASSESS",
+      "COLREG_R08_POSITIVE_ACTION_WHEN_RISK"
+    ],
+    "render": {
+      "topdown": {
+        "size_px": 768,
+        "dpi": 120,
+        "frame_offsets": [
+          -90,
+          -60,
+          -30,
+          -1
+        ],
+        "range_m": 2500.0,
+        "trail_len_s": 60.0
+      },
+      "radar": {
+        "size_px": 768,
+        "dpi": 120,
+        "frame_offsets": [
+          -90,
+          -60,
+          -30,
+          -1
+        ],
+        "rmax_m": 3500.0,
+        "range_sigma_m": 15.0,
+        "bearing_sigma_deg": 1.0,
+        "clutter_points": 60,
+        "seed": 42,
+        "grid_n": 512,
+        "target_sigma_m": 30.0,
+        "clutter_sigma_m": 45.0,
+        "target_amp": 1.0,
+        "clutter_amp": 0.25
+      }
+    }
+  }
+}

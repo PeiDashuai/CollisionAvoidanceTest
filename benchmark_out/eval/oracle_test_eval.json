@@ -1,0 +1,23 @@
+{
+  "num_gt_samples": 30,
+  "num_pred_samples": 30,
+  "rule_retrieval": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "maneuver": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "signals": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0
+  },
+  "arbitration": {
+    "exact_match": 1.0
+  },
+  "aggregate_score": 1.0
+}
